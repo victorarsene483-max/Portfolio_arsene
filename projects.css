@@ -1,0 +1,193 @@
+/* PAGE HEADING */
+.projects-header{
+    text-align: center;
+    padding: 60px 20px 20px;
+}
+
+.projects-header .neon{
+    font-size: 3rem;
+    margin-left: 0;
+    text-align: center;
+}
+
+.projects-subtitle{
+    color: antiquewhite;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    margin-top: 10px;
+    margin-left: 0;
+    max-width: 100%;
+    text-align: center;
+    padding: 0;
+}
+
+/* GRID — one card per row */
+.projects-grid{
+    display: grid;
+    flex-direction: column;
+    gap: 60px;
+    padding: 40px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* CARD */
+.project-card{
+    background: #0d2a33;
+    border: 1px solid #3a0000;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px rgba(255,0,0,0.15);
+    margin-bottom: 40px;
+}
+
+.project-card:hover{
+    transform: translateY(-6px);
+    box-shadow:
+        0 0 15px red,
+        0 0 30px red;
+}
+
+/* CARD IMAGE — full width, taller */
+.card-image{
+    width: 100%;
+    height: 380px;
+    overflow: hidden;
+    background: #07191e;
+}
+
+.card-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+}
+
+/* CARD BODY */
+.card-body{
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.card-title{
+    font-family: 'Orbitron', sans-serif;
+    color: red;
+    font-size: 1.3rem;
+    margin: 0;
+    text-shadow:
+        0 0 5px red,
+        0 0 10px red;
+}
+
+.card-description{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ccc;
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    margin-left: 0;
+}
+
+/* TECH TAGS */
+.card-tech{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.card-tech span{
+    background: #1a0000;
+    color: red;
+    border: 1px solid red;
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+/* CARD BUTTONS */
+.card-buttons{
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.card-btn{
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border: 2px solid white;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.card-btn.live{
+    background: white;
+    color: #07191e;
+}
+
+.card-btn.live:hover{
+    background: rgb(118, 26, 9);
+    color: red;
+    border-color: red;
+    box-shadow:
+        0 0 5px red,
+        0 0 10px red;
+}
+
+.card-btn.github{
+    background: transparent;
+    color: white;
+}
+
+.card-btn.github:hover{
+    background: rgb(118, 26, 9);
+    color: red;
+    border-color: red;
+    box-shadow:
+        0 0 5px red,
+        0 0 10px red;
+}
+@media(max-width: 768px){
+    .projects-grid{
+        padding: 20px;
+        gap: 40px;
+    }
+
+    .card-image{
+        height: 220px;
+    }
+
+    .card-body{
+        padding: 20px;
+    }
+
+    .card-title{
+        font-size: 1rem;
+    }
+
+    .card-buttons{
+        flex-direction: column;
+    }
+
+    .card-btn{
+        text-align: center;
+    }
+
+    .projects-header .neon{
+        font-size: 2rem;
+    }
+}
