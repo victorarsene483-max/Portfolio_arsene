@@ -1,18 +1,77 @@
-body{
-    background: #07191e;
-    overflow-x: hidden;
+
+:root{
+    --bg: #07191e;
+    --text: white;
+    --sub: antiquewhite;
+    --accent: red;
+    --accent-deep: #990000;
+
+    --nav-shadow: 0 0 10px red, 0 0 20px red, 0 0 40px red;
+    --menu-shadow: 0 0 10px red, 0 0 20px red;
+
+    --neon-color: #fff;
+    --neon-a: 0 0 5px red, 0 0 10px red, 0 0 20px red, 0 0 40px red, 0 0 80px red;
+    --neon-b: 0 0 2px red, 0 0 5px red, 0 0 10px red, 0 0 20px red, 0 0 40px red;
+    --h1-shadow: 0 0 5px red, 0 0 10px red, 0 0 20px red, 0 0 40px red;
+
+    --btn-bg: white;
+    --btn-text: black;
+    --btn-border: #fff;
+    --btn-hover-bg: rgb(118, 26, 9);
+    --btn-hover-text: red;
+    --btn-hover-shadow: 0 0 5px red, 0 0 10px red, 0 0 20px red;
+
+    --social-hover-bg: #690c0c;
+    --social-hover-color: #500f0f;
+
+    --img-shadow: 0 0 30px red, 0 0 60px red;
 }
+
+:root[data-theme="light"]{
+    --bg: #eef3f4;
+    --text: #0a1a22;
+    --sub: #4a5a62;
+    --accent: #d1001a;
+    --accent-deep: rgba(209, 0, 26, 0.35);
+
+    --nav-shadow: 0 4px 24px rgba(209, 0, 26, 0.35);
+    --menu-shadow: 0 8px 24px rgba(209, 0, 26, 0.3);
+
+    --neon-color: #c4001a;
+    --neon-a: 0 0 18px rgba(209, 0, 26, 0.3);
+    --neon-b: 0 0 8px rgba(209, 0, 26, 0.2);
+    --h1-shadow: 0 0 18px rgba(209, 0, 26, 0.3);
+
+    --btn-bg: #0a1a22;
+    --btn-text: #fff;
+    --btn-border: #0a1a22;
+    --btn-hover-bg: #d1001a;
+    --btn-hover-text: #fff;
+    --btn-hover-shadow: none;
+
+    --social-hover-bg: #d1001a;
+    --social-hover-color: #fff;
+
+    --img-shadow: 0 0 30px rgba(209, 0, 26, 0.45), 0 0 60px rgba(209, 0, 26, 0.2);
+}
+
+body{
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
 
 nav{
     display: flex;
     align-items: center;
     padding: 15px 30px;
     box-sizing: content-box;
-    background: #07191e;
-    color: white;
-    box-shadow: 0 0 10px red,
-                0 0 20px red,
-                0 0 40px red;
+    background: var(--bg);
+    color: var(--text);
+    box-shadow: var(--nav-shadow);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nav-links{
@@ -27,7 +86,7 @@ nav{
 }
 
 .nav-links a {
-    color: white;
+    color: var(--text);
     text-decoration: none;
     margin: 0 20px;
     font-family: 'Orbitron', sans-serif;
@@ -36,65 +95,76 @@ nav{
 }
 
 .nav-links a:hover {
-    color: red;
+    color: var(--accent);
     text-shadow:
-        0 0 5px #990000,
-        0 0 10px #990000,
-        0 0 20px #990000;
+        0 0 5px var(--accent-deep),
+        0 0 10px var(--accent-deep),
+        0 0 20px var(--accent-deep);
     transform: translateY(-2px);
     cursor: pointer;
 }
 
+
+nav .theme-toggle{
+    width: 42px;
+    height: 42px;
+    margin: 0 0 0 30px;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    background: transparent;
+    color: var(--text);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    letter-spacing: 0;
+}
+
+nav .theme-toggle:hover,
+nav .theme-toggle:focus-visible{
+    animation: none;
+    background: rgba(255, 0, 0, 0.15);
+    color: var(--accent);
+    text-shadow: none;
+    transform: none;
+    letter-spacing: 0;
+    box-shadow: 0 0 10px var(--accent);
+    outline: none;
+}
+
+.theme-toggle svg{ width: 20px; height: 20px; }
+.theme-toggle .sun{ display: none; }
+:root[data-theme="light"] .theme-toggle .sun{ display: block; }
+:root[data-theme="light"] .theme-toggle .moon{ display: none; }
+
+
 .neon {
-    color: #fff;
+    color: var(--neon-color);
     font-size: 4rem;
     font-weight: bold;
     text-transform: uppercase;
     text-align: left;
     padding: 20px 30px 0;
-    text-shadow:
-        0 0 5px red,
-        0 0 10px red,
-        0 0 20px red,
-        0 0 40px red,
-        0 0 80px red;
+    text-shadow: var(--neon-a);
     animation: flicker 2s infinite alternate;
 }
 
 @keyframes flicker {
-    from {
-        text-shadow:
-            0 0 5px red,
-            0 0 10px red,
-            0 0 20px red,
-            0 0 40px red,
-            0 0 80px red;
-    }
-    to {
-        text-shadow:
-            0 0 2px red,
-            0 0 5px red,
-            0 0 10px red,
-            0 0 20px red,
-            0 0 40px red;
-    }
+    from { text-shadow: var(--neon-a); }
+    to   { text-shadow: var(--neon-b); }
 }
 
 h1 {
     font-family: 'Orbitron', sans-serif;
-    color: red;
-    text-shadow:
-        0 0 5px red,
-        0 0 10px red,
-        0 0 20px red,
-        0 0 40px red;
+    color: var(--accent);
+    text-shadow: var(--h1-shadow);
     margin-left: -100px;
 }
 
 h2{
     font-family: 'Orbitron', sans-serif;
     font-size: medium;
-    color: white;
+    color: var(--text);
 }
 
 h3{
@@ -105,10 +175,14 @@ h3{
     margin-left: -100px;
 }
 
+.hero h3{
+    color: var(--sub) !important;
+}
+
 p{
     font-size: 20px;
     max-width: 800px;
-    color: white;
+    color: var(--text);
     font-family: Arial, Helvetica, sans-serif;
     padding: 10px 30px;
     margin-left: -100px;
@@ -129,10 +203,12 @@ p{
     to{ opacity: 1; }
 }
 
+
 button{
-    background-color: white;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
     margin: 10px;
-    border: 2px solid #fff;
+    border: 2px solid var(--btn-border);
     border-radius: 50px;
     padding: 12px 24px;
     cursor: pointer;
@@ -143,12 +219,10 @@ button{
 
 button:hover{
     animation: glow 1s infinite alternate;
-    background: rgb(118, 26, 9);
-    color: red;
-    text-shadow:
-        0 0 5px red,
-        0 0 10px red,
-        0 0 20px red;
+    background: var(--btn-hover-bg);
+    border-color: var(--btn-hover-bg);
+    color: var(--btn-hover-text);
+    text-shadow: var(--btn-hover-shadow);
     transform: translateY(-2px);
     cursor: pointer;
     letter-spacing: 1px;
@@ -164,42 +238,45 @@ button:hover{
     font-weight: 200;
 }
 
+
 .social-icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+    color: var(--text);
 }
 
 .social-icons a {
-  font-size: 28px;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  transition: all 0.3s ease;
+    font-size: 28px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
 }
 
 .social-icons a:hover {
-  transform: scale(1.2);
-  background: #690c0c;
-  color: #500f0f;
+    transform: scale(1.2);
+    background: var(--social-hover-bg);
+    color: var(--social-hover-color);
 }
 
 .container{
     text-align: center;
 }
 
+
 img{
     width: 280px;
     height: 420px;
     border-radius: 50px;
     object-fit: cover;
-    box-shadow: 0 0 30px red, 0 0 60px red;
+    box-shadow: var(--img-shadow);
     border: none;
     margin: 50px;
 }
@@ -220,11 +297,13 @@ img{
     gap: 40px;
     overflow: hidden;
 }
+
+
 .hamburger{
     display: none;
     background: none;
     border: none;
-    color: white;
+    color: var(--text);
     font-size: 2rem;
     cursor: pointer;
     margin-left: auto;
@@ -235,14 +314,24 @@ img{
 .hamburger:hover{
     background: none;
     transform: none;
-    text-shadow: 0 0 10px red;
+    text-shadow: 0 0 10px var(--accent);
     animation: none;
-    color: red;
+    color: var(--accent);
 }
+
 
 @media(max-width: 768px){
     .hamburger{
         display: block;
+    }
+
+   
+    nav .theme-toggle{
+        margin: 0 12px 0 auto;
+    }
+
+    nav .hamburger{
+        margin-left: 0;
     }
 
     .nav-links{
@@ -252,10 +341,9 @@ img{
         top: 60px;
         left: 0;
         width: 100%;
-        background: #07191e;
+        background: var(--bg);
         padding: 20px 0;
-        box-shadow: 0 0 10px red,
-                    0 0 20px red;
+        box-shadow: var(--menu-shadow);
         z-index: 999;
     }
 
